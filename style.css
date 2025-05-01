@@ -32,8 +32,8 @@ margin-left: 10vh;
 }
 
 .grandchild1 {
+    height: 75%;
     display: flex;
-    line-height: 100%;
     
 }
 
@@ -49,6 +49,8 @@ margin-left: 10vh;
     background-image: url(Terrain_desert.png);
     box-shadow: 2px 2px 5px black;
     width: 70%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 /* CHILD 2 -------------------------------------------*/
