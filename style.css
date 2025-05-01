@@ -1,0 +1,207 @@
+
+
+body{
+    background-color: rgb(45, 45, 45);
+    font-family:Arial, Helvetica, sans-serif ;
+    text-shadow: 2px 2px 5px black;
+    display: flex;
+}
+
+.parent0 {
+margin-left: 10vh;
+  border: 5px solid black;
+  height:90vh;
+  width: 46vw;
+}
+
+.child1{
+    background-color: rgb(61, 52, 52);
+    height: 15%;
+}
+
+.title {
+    background-image: linear-gradient(rgb(106, 106, 106), black);
+    height: 25%;
+    text-align: center;
+}
+
+#battle {
+    margin: 0;
+    color: white;
+    font-size: medium;
+}
+
+.grandchild1 {
+    display: flex;
+    line-height: 100%;
+    
+}
+
+#symbol {
+    color: white;
+    padding: 0%;
+    width: 15%;
+    background-color: rgb(61, 52, 52);
+    text-align: center;
+}
+
+.terrain {
+    background-image: url(Terrain_desert.png);
+    box-shadow: 2px 2px 5px black;
+    width: 70%;
+}
+
+/* CHILD 2 -------------------------------------------*/
+
+.child2{
+    background-color: rgb(59,59,59);
+    height: 22%;
+    display: flex;
+}
+
+#leader {
+    width: 18%;
+}
+
+.axisLeader{
+    background-image: url(AxisLeader.png);
+    box-shadow: 2px 2px 5px black;
+    height: 100%;
+    width: 87%;
+    margin: auto;
+}
+
+.alliedLeader{
+    background-image: url(AlliedLeader.png);
+    box-shadow: 2px 2px 5px black;
+    height: 100%;
+    width: 87%;
+    margin: auto;
+}
+
+.tactic {
+    width: 70%;
+}
+
+/* CHILD 3 ------------------------------------------- */
+
+
+.child3{
+    background-color: rgb(59, 59, 59);
+    height: 63%;
+
+}
+
+.titles {
+    margin: auto;
+    height: 80px;
+    width: 95%;
+    background-color: rgb(61,52, 52);
+    box-shadow: inset 0px 0px 15px rgba(0,0,0,0.9);
+}
+
+.leaderInfo{
+    color: white;
+    height: 40%;
+    width: auto;
+    background-image: linear-gradient(rgb(45, 52, 47), rgb(24, 24, 24));
+    box-shadow: inset 0px 0px 15px rgba(0,0,0,0.9);
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+
+.grandchild3{
+    margin:auto;
+    height: 70%;
+    width: 90%;
+    box-shadow: 2px 2px 5px black;
+    outline: 4px solid rgb(0, 0, 0);
+}
+
+.tacticalMap {
+    box-shadow: inset 0px 0px 15px rgba(0,0,0,0.9);
+    opacity: 0.4; 
+    background-image: url(battleBackground.png);
+    height: 100%;
+    width: auto;
+}
+
+/* Parent1 ------------------------------------------- */
+/* Parent1 ------------------------------------------- */
+/* Parent1 ------------------------------------------- */
+/* Parent1 ------------------------------------------- */
+/* Parent1 ------------------------------------------- */
+/* Parent1 ------------------------------------------- */
+/* Parent1 ------------------------------------------- */
+
+
+.parent1{
+    margin-top: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    background-image: url("map.png");
+    box-shadow: 2px 50px 30px black;
+    height: 60vh;
+    width: 80vh;
+}
+
+.field{
+    margin-top: 27%;
+    height: 20vh;
+    width: auto;
+    display:flex;
+}
+
+.axisUnits{
+    height: 100%;
+    width: 20%;
+    margin-left: 29%;
+}
+
+.alliedUnits{
+    height: 100%;
+    width: 20%;
+    margin-left: 1%;
+}
+
+.axisDivisions{
+    box-shadow: 2px 2px 5px black;
+    border-radius: 5px;
+    margin-top: 30%;
+    width: 15vh;
+    height: 4.5ch;
+    background-image: linear-gradient(rgb(74, 74, 74), black);
+    display: flex;
+}
+
+.tankIcon{
+    width: 70%;
+    height: 5vh;
+    background-image: url("tank.png");
+}
+
+.count{
+    color: white;
+    width: 30%;
+    height: 5vh;
+    text-align: center;
+}
+
+.alliedDivisions{
+    box-shadow: 2px 2px 5px black;
+    border-radius: 5px;
+    margin-top: 30%;
+    width: 15vh;
+    height: 4.5ch;
+    background-image: linear-gradient(rgb(174, 68, 68), rgb(44, 27, 27));
+    display: flex;
+}
+
+.infIcon{
+    width: 70%;
+    height: 6vh;
+    background-image: url("infantry.png");
+}
