@@ -16,7 +16,7 @@ margin-left: 10vh;
 
 .child1{
     background-color: rgb(61, 52, 52);
-    height: 15%;
+    height: 23%;
 }
 
 .title {
@@ -28,7 +28,7 @@ margin-left: 10vh;
 #battle {
     margin: 0;
     color: white;
-    font-size: medium;
+    font-size: 4vb;
 }
 
 .grandchild1 {
@@ -37,12 +37,18 @@ margin-left: 10vh;
     
 }
 
-#symbol {
-    color: white;
+#attackSymbol {
+    background-image: url(attack.png);
     width: 15%;
-    background-color: rgb(61, 52, 52);
-    text-align: center;
-    font-size: 70px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#defenceSymbol {
+    background-image: url(defence.png);
+    width: 15%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .terrain {
@@ -57,7 +63,7 @@ margin-left: 10vh;
 
 .child2{
     background-color: rgb(59,59,59);
-    height: 22%;
+    height: 19%;
     display: flex;
 }
 
@@ -98,7 +104,7 @@ margin-left: 10vh;
 
 .child3{
     background-color: rgb(59, 59, 59);
-    height: 63%;
+    height: 58%;
 
 }
 
