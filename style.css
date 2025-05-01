@@ -39,10 +39,10 @@ margin-left: 10vh;
 
 #symbol {
     color: white;
-    padding: 0%;
     width: 15%;
     background-color: rgb(61, 52, 52);
     text-align: center;
+    font-size: 70px;
 }
 
 .terrain {
@@ -65,12 +65,18 @@ margin-left: 10vh;
     width: 18%;
 }
 
+#leaderName{
+    font-size: large;
+    text-align: center;
+}
 .axisLeader{
     background-image: url(AxisLeader.png);
     box-shadow: 2px 2px 5px black;
     height: 100%;
     width: 87%;
     margin: auto;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .alliedLeader{
@@ -79,6 +85,8 @@ margin-left: 10vh;
     height: 100%;
     width: 87%;
     margin: auto;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .tactic {
@@ -129,6 +137,8 @@ margin-left: 10vh;
     background-image: url(battleBackground.png);
     height: 100%;
     width: auto;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 /* Parent1 ------------------------------------------- */
@@ -148,6 +158,8 @@ margin-left: 10vh;
     box-shadow: 2px 50px 30px black;
     height: 60vh;
     width: 80vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .field{
@@ -173,16 +185,19 @@ margin-left: 10vh;
     box-shadow: 2px 2px 5px black;
     border-radius: 5px;
     margin-top: 30%;
-    width: 15vh;
-    height: 4.5ch;
+    width: 80%;
+    height: 20%;
     background-image: linear-gradient(rgb(74, 74, 74), black);
     display: flex;
+    
 }
 
 .tankIcon{
     width: 70%;
     height: 5vh;
     background-image: url("tank.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .count{
@@ -196,14 +211,16 @@ margin-left: 10vh;
     box-shadow: 2px 2px 5px black;
     border-radius: 5px;
     margin-top: 30%;
-    width: 15vh;
-    height: 4.5ch;
+    width: 80%;
+    height: 20%;
     background-image: linear-gradient(rgb(174, 68, 68), rgb(44, 27, 27));
     display: flex;
 }
 
 .infIcon{
     width: 70%;
-    height: 6vh;
+    height: auto;
     background-image: url("infantry.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }

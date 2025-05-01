@@ -11,9 +11,11 @@ document.body.addEventListener("click", ()=>{
     unselect(document.querySelector(".axisDivisions"))
 })
 
-infDiv.addEventListener("contextmenu", ()=>{
+infDiv.addEventListener("contextmenu", (e)=>{
+    e.preventDefault()
     if (isSelected) {
         alert("esports click!")
+    
     }
 })
 
