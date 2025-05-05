@@ -2,6 +2,10 @@ const panzerDiv = document.querySelector(".tankIcon")
 const infDiv = document.querySelector(".infIcon")
 let isSelected = false
 
+// ---------------------------------------------------
+// Selecting Units
+// ---------------------------------------------------
+
 panzerDiv.addEventListener("click", (e) => {
     e.stopPropagation()
     selected(document.querySelector(".axisDivisions"))
