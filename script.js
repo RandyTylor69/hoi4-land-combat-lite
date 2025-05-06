@@ -25,8 +25,13 @@ panzerDiv.addEventListener("click", (e) => {
 
         // add element to frontend
         const fieldDiv = document.createElement('div') // fieldDiv = one div 
+        const statsSpan = document.createElement('span')
         axisSide.appendChild(fieldDiv)
-        fieldDiv.classList.add("stats")
+        fieldDiv.appendChild(statsSpan)
+        fieldDiv.classList.add("divVisual")
+        statsSpan.classList.add("axisTrait")
+        statsSpan.innerHTML = "org: " + div.org
+
     }
 })
 
@@ -41,11 +46,34 @@ infDiv.addEventListener("contextmenu", (e)=>{
             //                     atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, dmg factor (df)
             let div = new Division(100,     40,      350, 16,    55,  250,    0,      0,     60,        0)
             fieldY.push(div)
+
+                    // add element to frontend
+            const fieldDiv = document.createElement('div') // fieldDiv = one div 
+            const statsSpan = document.createElement('span')
+            alliedSide.appendChild(fieldDiv)
+            fieldDiv.appendChild(statsSpan)
+            fieldDiv.classList.add("divVisual")
+            statsSpan.classList.add("alliedTrait")
+            statsSpan.innerHTML = "org: " + div.org
         }
         
-        for (let i = 24; i > 0; i--) {
+        for (let i = 90; i > 0; i--) {
             engage(fieldX, fieldY) 
         }
+
+        // modifying axis stats after combat
+
+        for (let i of fieldX) {
+            let changedStatsSpan = document.querySelector(".axisTrait")
+            changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
+        }
+        
+        for (let i of fieldY) {
+            let changedStatsSpan = document.querySelector(".alliedTrait")
+            changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
+        }
+
+        
 
 
         console.log("after battle org of the first panzer div: " + Math.round(fieldX[0].org).toFixed(1))
@@ -107,6 +135,8 @@ class Division{
 
         other.org -= orgDmgDealt
         other.hp -= hpDmgDealt
+
+        
     }
 
 }
