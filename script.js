@@ -1,6 +1,9 @@
 const panzerDiv = document.querySelector(".tankIcon")
 const infDiv = document.querySelector(".infIcon")
-let isSelected = false
+const fieldX = []
+const fieldY = []
+let isSelected = false // if the PANZER div is selected or not
+
 
 // ---------------------------------------------------
 // Selecting Units
@@ -9,6 +12,14 @@ let isSelected = false
 panzerDiv.addEventListener("click", (e) => {
     e.stopPropagation()
     selected(document.querySelector(".axisDivisions"))
+
+    // add divisions to field
+    for (let i = 0; i < 2; i++) {
+        //                     atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, dmg factor (df)
+        let div = new Division(800,     600,     800, 36,    30,  250,    0.7,    70,    100,    0.8)
+        //                                                                                      80% planning  
+        fieldX.push(div)
+    }
 })
 
 document.body.addEventListener("click", ()=>{
@@ -18,7 +29,20 @@ document.body.addEventListener("click", ()=>{
 infDiv.addEventListener("contextmenu", (e)=>{
     e.preventDefault()
     if (isSelected) {
-        alert("esports click!")
+        for (let i = 0; i < 5; i++) {
+            //                     atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, dmg factor (df)
+            let div = new Division(100,     40,      350, 16,    55,  250,    0,      0,     60,        0)
+            fieldY.push(div)
+        }
+        
+        for (let i =0; i < 5; )
+        engage(fieldX, fieldY) 
+
+        console.log("after battle org of the first panzer div: " + Math.round(fieldX[0].org).toFixed(1))
+        console.log("after battle hp of the first panzer div: " + Math.round(fieldX[0].hp).toFixed(1))
+        console.log("after battle org of the first inf div: " + Math.round(fieldY[0].org).toFixed(1))
+        console.log("after battle hp of the first inf div: " + Math.round(fieldY[0].hp).toFixed(1))
+    
     
     }
 })
@@ -38,7 +62,7 @@ function unselect(div) {
 // ----------------------------------------------------//
 
 class Division{
-    constructor(atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing) {
+    constructor(atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, df) {
         this.atkSoft = atkSoft;
         this.atkHard = atkHard;
         this.def = def;
@@ -48,10 +72,11 @@ class Division{
         this.hp = hp;
         this.armor = armor;
         this.piercing = piercing;
+        this.df = df;
     }
 
     dealDamage(other, dmg) {
-
+        //dmg *= (1+this.df)
         let dmgNum = Math.round(dmg/10)
         let defNum = Math.round(other.def/10)
         let dmgHit = 0
@@ -84,12 +109,12 @@ function engage(fieldX, fieldY) {
         // 1. deal secondary damage to all targets
         for (let j of fieldY) {
 
-            let secondaryDmg = (i.atkHard * j.hardness +i.atkSoft * (1-j.hardness)) * 0.65 / fieldY.size();
+            let secondaryDmg = (i.atkHard * j.hardness +i.atkSoft * (1-j.hardness)) * 0.65 / fieldY.length;
             i.dealDamage(j, secondaryDmg)
         }
 
         // 2. deal primary damage
-        let primaryDmg = (i.atkHard * j.hardness +i.atkSoft * (1-j.hardness)) * 0.35 
+        let primaryDmg = (i.atkHard * fieldY[0].hardness +fieldY[0].atkSoft * (1-fieldY[0].hardness)) * 0.35 
         i.dealDamage(fieldY[0], primaryDmg)
     }
 
@@ -99,12 +124,12 @@ function engage(fieldX, fieldY) {
         // 1. deal secondary damage to all targets
         for (let j of fieldX) {
 
-            let secondaryDmg = (i.atkHard * j.hardness +i.atkSoft * (1-j.hardness)) * 0.65 / fieldX.size();
+            let secondaryDmg = (i.atkHard * j.hardness +i.atkSoft * (1-j.hardness)) * 0.65 / fieldX.length;
             i.dealDamage(j, secondaryDmg)
         }
 
         // 2. deal primary damage
-        let primaryDmg = (i.atkHard * j.hardness +i.atkSoft * (1-j.hardness)) * 0.35 
+        let primaryDmg = (i.atkHard * fieldX[0].hardness +fieldX[0].atkSoft * (1-fieldX[0].hardness)) * 0.35 
         i.dealDamage(fieldX[0], primaryDmg)
     }
 
