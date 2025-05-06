@@ -1,5 +1,7 @@
 const panzerDiv = document.querySelector(".tankIcon")
 const infDiv = document.querySelector(".infIcon")
+const axisSide = document.querySelector(".axisSide")
+const alliedSide = document.querySelector(".alliedSide")
 const fieldX = []
 const fieldY = []
 let isSelected = false // if the PANZER div is selected or not
@@ -17,8 +19,14 @@ panzerDiv.addEventListener("click", (e) => {
     for (let i = 0; i < 2; i++) {
         //                     atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, dmg factor (df)
         let div = new Division(800,     600,     800, 36,    30,  250,    0.7,    70,    100,    0.8)
-        //                                                                                      80% planning  
+    
+        // add element to backend
         fieldX.push(div)
+
+        // add element to frontend
+        const fieldDiv = document.createElement('div') // fieldDiv = one div 
+        axisSide.appendChild(fieldDiv)
+        fieldDiv.classList.add("stats")
     }
 })
 
@@ -35,8 +43,10 @@ infDiv.addEventListener("contextmenu", (e)=>{
             fieldY.push(div)
         }
         
-        for (let i =0; i < 5; )
-        engage(fieldX, fieldY) 
+        for (let i = 24; i > 0; i--) {
+            engage(fieldX, fieldY) 
+        }
+
 
         console.log("after battle org of the first panzer div: " + Math.round(fieldX[0].org).toFixed(1))
         console.log("after battle hp of the first panzer div: " + Math.round(fieldX[0].hp).toFixed(1))

@@ -145,6 +145,31 @@ margin-left: 10vh;
     width: auto;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/* LOOK AT MY STATS */ 
+
+.axisSide {
+    background-color: teal;
+    height: 100%;
+    width: 40%;
+}
+
+.alliedSide {
+    background-color: teal;
+    height: 100%;
+    width: 40%;
+}
+
+.stats {
+    background-color: orange;
+    height: 20%;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Parent1 ------------------------------------------- */
