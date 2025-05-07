@@ -56,22 +56,27 @@ infDiv.addEventListener("contextmenu", (e)=>{
             statsSpan.classList.add("alliedTrait")
             statsSpan.innerHTML = "org: " + div.org
         }
+
+        function modifyCombat() {
+    
+                engage(fieldX, fieldY) 
+                for (let i of fieldX) {
+                    let changedStatsSpan = document.querySelector(".axisTrait")
+                    changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
+                }
+                
+                for (let i of fieldY) {
+                    let changedStatsSpan = document.querySelector(".alliedTrait")
+                    changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
+                }
         
-        for (let i = 90; i > 0; i--) {
-            engage(fieldX, fieldY) 
         }
+        
+    
 
         // modifying axis stats after combat
+        setInterval(modifyCombat, 250)
 
-        for (let i of fieldX) {
-            let changedStatsSpan = document.querySelector(".axisTrait")
-            changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
-        }
-        
-        for (let i of fieldY) {
-            let changedStatsSpan = document.querySelector(".alliedTrait")
-            changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
-        }
 
         
 
