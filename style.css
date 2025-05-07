@@ -153,31 +153,33 @@ margin-left: 10vh;
 /* LOOK AT MY STATS */ 
 
 .axisSide {
-    background-color: teal;
     height: 100%;
     width: 40%;
 }
 
 .alliedSide {
-    background-color: teal;
     height: 100%;
     width: 40%;
 }
 
-.divVisual {
-    background-color: orange;
-    height: 20%;
+.axisTrait {
+    background-image: linear-gradient(rgb(103, 119, 108), rgb(24, 24, 24));
+    height: 15%;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-.axisTrait {
-
+    color: white;
+    opacity: 1;
 }
 
 .alliedTrait{
-    
+    background-image: linear-gradient(rgb(103, 119, 108), rgb(24, 24, 24));
+    height: 15%;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    opacity: 1;
 }
 
 /* Parent1 ------------------------------------------- */

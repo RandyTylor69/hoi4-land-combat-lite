@@ -2,6 +2,8 @@ const panzerDiv = document.querySelector(".tankIcon")
 const infDiv = document.querySelector(".infIcon")
 const axisSide = document.querySelector(".axisSide")
 const alliedSide = document.querySelector(".alliedSide")
+const alliedD = document.querySelector(".alliedDivisions")
+const axisdD = document.querySelector(".axisDivisions")
 const fieldX = []
 const fieldY = []
 let isSelected = false // if the PANZER div is selected or not
@@ -18,7 +20,9 @@ panzerDiv.addEventListener("click", (e) => {
     // add divisions to field
     for (let i = 0; i < 2; i++) {
         //                     atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, dmg factor (df)
-        let div = new Division(800,     600,     800, 36,    30,  250,    0.7,    70,    100,    0.8)
+        let div = new Division(1000,     800,     800, 36,    30,  250,    0.7,    70,    100,    0.8)
+
+
     
         // add element to backend
         fieldX.push(div)
@@ -28,8 +32,7 @@ panzerDiv.addEventListener("click", (e) => {
         const statsSpan = document.createElement('span')
         axisSide.appendChild(fieldDiv)
         fieldDiv.appendChild(statsSpan)
-        fieldDiv.classList.add("divVisual")
-        statsSpan.classList.add("axisTrait")
+        fieldDiv.classList.add("axisTrait")
         statsSpan.innerHTML = "org: " + div.org
 
     }
@@ -44,7 +47,7 @@ infDiv.addEventListener("contextmenu", (e)=>{
     if (isSelected) {
         for (let i = 0; i < 5; i++) {
             //                     atkSoft, atkHard, def, width, org, hp, hardness, armor, piercing, dmg factor (df)
-            let div = new Division(100,     40,      350, 16,    55,  250,    0,      0,     60,        0)
+            let div = new Division(100,     40,      350, 16,    55,  250,    0,      0,     20,        0)
             fieldY.push(div)
 
                     // add element to frontend
@@ -52,39 +55,53 @@ infDiv.addEventListener("contextmenu", (e)=>{
             const statsSpan = document.createElement('span')
             alliedSide.appendChild(fieldDiv)
             fieldDiv.appendChild(statsSpan)
-            fieldDiv.classList.add("divVisual")
-            statsSpan.classList.add("alliedTrait")
+            fieldDiv.classList.add("alliedTrait")
             statsSpan.innerHTML = "org: " + div.org
         }
 
         function modifyCombat() {
     
-                engage(fieldX, fieldY) 
-                for (let i of fieldX) {
-                    let changedStatsSpan = document.querySelector(".axisTrait")
-                    changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
-                }
+            engage(fieldX, fieldY) 
                 
-                for (let i of fieldY) {
-                    let changedStatsSpan = document.querySelector(".alliedTrait")
-                    changedStatsSpan.innerHTML = "org: " + Math.round(i.org).toFixed(1)
+            const axisTraits = document.querySelectorAll(".axisTrait") 
+            const alliedTraits = document.querySelectorAll(".alliedTrait")
+
+            fieldX.forEach((element, index) => {
+                axisTraits[index].innerHTML = "org: " + Math.round(element.org).toFixed(1)
+                // remove from combat
+                if (element.org <= 0) {
+                    fieldX.splice(index, 1)
+                    document.querySelector(".axisTrait").remove()
                 }
-        
+            })
+
+            fieldY.forEach((element, index) => {
+                alliedTraits[index].innerHTML = "org: " + Math.round(element.org).toFixed(1)
+                // remove from combat
+                if (element.org <= 0) {
+                    fieldY.splice(index, 1)
+                    document.querySelector(".alliedTrait").remove()
+                }
+            })
+
+                                                // ALLIED VICTORY //
+            if (fieldX.length == 0) {
+                clearInterval(combatHappening)
+                document.querySelector(".axisDivisions").remove()
+                alert("a bitter defeat! fall back to Bengazi!")
+            } 
+                                                // AXIS VICTORY //
+            else if (fieldY.length == 0) {
+                clearInterval(combatHappening)
+                document.querySelector(".alliedDivisions").remove()
+                alert("decisive axis victory! Cairo is within our reach!")
+            }
         }
         
     
 
         // modifying axis stats after combat
-        setInterval(modifyCombat, 250)
-
-
-        
-
-
-        console.log("after battle org of the first panzer div: " + Math.round(fieldX[0].org).toFixed(1))
-        console.log("after battle hp of the first panzer div: " + Math.round(fieldX[0].hp).toFixed(1))
-        console.log("after battle org of the first inf div: " + Math.round(fieldY[0].org).toFixed(1))
-        console.log("after battle hp of the first inf div: " + Math.round(fieldY[0].hp).toFixed(1))
+        const combatHappening = setInterval(modifyCombat, 100)
     
     
     }
@@ -159,7 +176,7 @@ function engage(fieldX, fieldY) {
         }
 
         // 2. deal primary damage
-        let primaryDmg = (i.atkHard * fieldY[0].hardness +fieldY[0].atkSoft * (1-fieldY[0].hardness)) * 0.35 
+        let primaryDmg = (i.atkHard * fieldY[0].hardness + i.atkSoft * (1-fieldY[0].hardness)) * 0.35 
         i.dealDamage(fieldY[0], primaryDmg)
     }
 
@@ -174,7 +191,7 @@ function engage(fieldX, fieldY) {
         }
 
         // 2. deal primary damage
-        let primaryDmg = (i.atkHard * fieldX[0].hardness +fieldX[0].atkSoft * (1-fieldX[0].hardness)) * 0.35 
+        let primaryDmg = (i.atkHard * fieldX[0].hardness + i.atkSoft * (1-fieldX[0].hardness)) * 0.35 
         i.dealDamage(fieldX[0], primaryDmg)
     }
 
